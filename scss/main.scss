@@ -1,0 +1,331 @@
+@import "config";
+@import "menu";
+@import "responsive";
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    @include background;
+    background: $primary-color;
+    color: set-text-color($primary-color);
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+// headings
+h1, h2, h3 {
+    margin: 0;
+    font-weight:400;
+
+    &.lg-heading{
+        font-size:6rem;
+    }
+
+    &.sm-heading{
+        margin-bottom:2rem;
+        padding:0.2rem 1rem;
+        background: rgba(lighten($primary-color, 2), 0.5);
+    }
+}
+
+@include responsive_heading1;
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+.text-secondary{
+    color: $secondary-color;
+}
+
+main {
+    padding: 4rem;
+    // height: 100%;
+    min-height: calc(100vh - 60px);
+
+    .icons {
+        margin-top: 1rem;
+
+        a {
+            padding: 0.4rem;
+
+            &:hover {
+                color: $secondary-color;
+                @include easeOut();
+            }
+        }
+
+        
+
+        
+
+        
+
+        
+    }
+
+    
+                
+       
+
+    
+                
+       
+
+    &#home {
+        overflow: hidden;
+
+        h1 {
+            margin-top:20vh;
+        }
+    }
+}
+
+.about-info{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas: 
+    'bioimage bio bio'
+    'school1 school2 school3';
+    grid-template-columns: repeat(3, 1fr);
+
+    .bio-image {
+        grid-area: bioimage;
+        margin: auto;
+        border-radius: 50%;
+        border: solid 3px $secondary-color;
+    }
+    
+    .bio {
+        grid-area: bio;
+        font-size: 1.5rem;
+    }
+
+    .subheading {
+        width: 100%;
+    }
+    
+    .school-1 {
+        grid-area: school1;
+    }
+    
+    .school-2 {
+        grid-area: school2;
+    }
+    
+    .school-3 {
+        grid-area: school3;
+    }
+    
+    .school {
+        background: lighten($primary-color, 5);
+        padding: 0.5rem;
+        border-bottom: $secondary-color 5px solid;
+        @include responsive_header;
+            
+    
+    }
+
+    
+
+    
+}
+
+// projects/projects
+
+.projects {
+    display: grid;
+    grid-gap: 0.7rem;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1em 0 2em 0;
+    padding: 1em 0 2em 0;
+
+    img {
+        width: 100%;
+        height: 55%;
+        height: 55%;
+        border: 3px $secondary-color solid;
+
+        &:hover {
+            opacity: 0.5;
+            border-color: #fff;
+            @include easeOut;
+        }
+    }
+}
+
+// Contact Page
+.boxes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1rem;
+
+    div{
+        font-size: 2rem;
+        border: 3px #fff solid;
+        padding: 1.5rem 2.5rem;
+        margin-bottom: 3rem;
+        @include easeOut;
+
+        &:hover{
+            padding: 0.5rem 1.5rem;
+            background: $secondary-color;
+            color: set-text-color($secondary-color);
+            span{
+                color: set-text-color($secondary-color);
+            }
+        }
+    }
+}
+
+@include responsive_text;
+
+// Button styles
+.btn {
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 0;
+    margin-bottom: 0.3rem;
+
+    &:hover {
+        background: $secondary-color;
+        color: set-text-color($secondary-color);
+        }
+}
+
+.btn-dark {
+    @extend .btn;
+    background: darken($primary-color, 50);
+    color: #fff;
+}
+
+.btn-light {
+    @extend .btn;
+    background: lighten($primary-color, 50);
+    color: #333;
+}
+
+#main-footer {
+    text-align: center;
+    padding: 1rem;
+    background: darken($primary-color, 10);
+    color: set-text-color($primary-color);
+    height: 60px;
+}
+
+
+@import"mobile";
+
+
+// Project tooltips
+
+.project-tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .project-tooltip .tooltiptext {
+    visibility: hidden;
+    width: 10em;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border: 0.5em solid #eece1a;
+    border-radius: 6px;
+    padding: 1em;
+    position: absolute;
+    z-index: 1;
+    bottom: 75%;
+    left: 40%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  @media screen and (min-width: 400px) {
+    .project-tooltip .tooltiptext {
+    width: 20em;
+    left: 20%;
+    }
+}
+  
+  .project-tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255) transparent transparent transparent;
+  }
+  
+  .project-tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+
+// Project tooltips
+
+.project-tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .project-tooltip .tooltiptext {
+    visibility: hidden;
+    width: 10em;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border: 0.5em solid #eece1a;
+    border-radius: 6px;
+    padding: 1em;
+    position: absolute;
+    z-index: 1;
+    bottom: 75%;
+    left: 40%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  @media screen and (min-width: 400px) {
+    .project-tooltip .tooltiptext {
+    width: 20em;
+    left: 20%;
+    }
+}
+  
+  .project-tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255) transparent transparent transparent;
+  }
+  
+  .project-tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
