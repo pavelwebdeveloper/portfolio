@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": "https//pavelwebdeveloper.github.io/portfolio",
   "scripts": {
-    "sass": "sass -w scss/ -o dist/css/ --recursive",
+    "sass": "sass -w scss/main.scss dist/css/main.css",
     "deploy": "gh-pages -d dist"
   },
   "author": "Shvets Pavel",
